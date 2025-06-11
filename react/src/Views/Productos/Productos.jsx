@@ -1,9 +1,14 @@
+import { useParams } from "react-router-dom"
 
-const Productos = () => {
+
+const Productos = ({marcas, productos}) => {
+
+const { idMarca } = useParams()
+
 
     return (
         <>
-            
+
         </>
     )
 }

@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "./Layout.css";
 
-const Layout = () => {
+const Layout = ({marcas}) => {
 
 
   return (
@@ -21,9 +21,17 @@ const Layout = () => {
                 <Link to={"/contacto"}>
                 <p className="nav-link">Contacto</p>
                 </Link>
-                <Link to={"/Productos"}>
-                <p className="nav-link">Productos</p>
-                </Link>
+                <div className="dropdown">
+                    <p className="nav-link">Productos ▾</p>
+                    <div className="dropdown-content">
+                        <Link to="/productos">Todos</Link>
+                        {marcas.map((m) => (
+                            <>
+                                <Link to={"/productos/" + m.id} > {m.nombre} </Link>
+                            </>
+                        ))}
+                    </div>
+                </div>
             </div>
         </header>
 

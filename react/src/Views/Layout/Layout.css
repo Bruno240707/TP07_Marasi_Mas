@@ -118,6 +118,43 @@
     margin-top: 16px; /* espacio entre el texto y los íconos */
   }
   
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown .nav-link {
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1;
+    text-align: left;
+  }
+  
+  .dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  
   .social-icon {
     width: 40px;  /* antes 28px */
     height: 40px;
