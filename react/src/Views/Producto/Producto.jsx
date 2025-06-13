@@ -1,29 +1,25 @@
-import { useEffect, useState } from "react"
-import "./Producto.css"
 import { useParams } from "react-router-dom"
+import "./Producto.css"
 
-const Producto = ({productos}) => {
+const Producto = ({ productos }) => {
+  const { idCelular } = useParams()
+  const producto = productos.find((p) => p.id == idCelular)
 
-    const { idCelular } = useParams()
-    const [producto, setProducto] = useState()
-
-    useEffect(() => {
-        const filtrados = productos.find((p) => p.id == idCelular)
-        setProducto(filtrados)
-    }, [idCelular, productos])
-
-    if (!producto) return <p>Producto no encontrado o cargando...</p>
-
-    return (
-        <>
-            <h1>Nombre: {producto.nombre}</h1>
-            <p>Descripcion: {producto.descripcion}</p>
-            <p>Precio: {producto.precio}</p>
-            {producto.fotos.map((f) => (
-                <img src={f}></img>
-            ))}
-        </>
-    )
+  return (
+    <main className="producto-container">
+      <section className="producto-info">
+        <h1 className="producto-nombre">{producto.nombre}</h1>
+        <p className="producto-descripcion">{producto.descripcion}</p>
+        <p className="producto-precio">${producto.precio}</p>
+      </section>
+      
+      <section className="producto-galeria">
+        {producto.fotos.map((f, i) => (
+          <img key={i} src={f} className="producto-foto" />
+        ))}
+      </section>
+    </main>
+  )
 }
 
 export default Producto

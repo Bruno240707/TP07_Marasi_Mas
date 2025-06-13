@@ -7,22 +7,12 @@ const Productos = ({productos}) => {
 
 const { idMarca } = useParams()
 
-    const [productosSeleccionados, setProductosSeleccionados] = useState([])
-
-    useEffect(() => {
-        if(idMarca) {
-            const filtrados = productos.filter((p) => p.marcaId == idMarca)
-            setProductosSeleccionados(filtrados)
-        }
-        else {
-            setProductosSeleccionados(productos)
-        }
-    }, [idMarca, productos])
+    const productosFiltrados = idMarca ? productos.filter((p) => p.marcaId == idMarca) : productos
 
     return (
         <>
             <div className="contenedorGeneralP">
-                {productosSeleccionados.map((p) => (
+                {productosFiltrados.map((p) => (
                     <ProductosCard producto={p} />
                 ))}
             </div>
